@@ -7,6 +7,9 @@ var gutil = require('gulp-util');;
 var path = require('path');
 var plugins = require('gulp-load-plugins')();
 var replace = require('gulp-replace-task');
+var gulpIf = require('gulp-if');
+var uglify = require('gulp-uglify');
+		     
 
 var lfrThemeConfig = require('../lib/liferay_theme_config');
 var lookAndFeelUtil = require('../lib/look_and_feel_util');
@@ -208,6 +211,7 @@ module.exports = function(options) {
 		return gulp.src(path.join(pathSrc, '**/*'), {
 			base: pathSrc
 		})
+			.pipe(gulpIf('!**/*.js', uglify()))
 			.pipe(gulp.dest(pathBuild));
 	});
 
