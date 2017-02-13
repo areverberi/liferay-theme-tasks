@@ -105,6 +105,8 @@
     "liferay-theme-deps-6.2": "*",
     "liferay-theme-deps-7.0": "*",
     "nyc": "^6.4.4",
-    "sinon": "^1.17.2"
+    "sinon": "^1.17.2",
+    "gulp-if": "^2.0.2",
+    "gulp-uglify": "^2.0.1"
   }
 }
