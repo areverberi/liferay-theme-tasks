@@ -91,7 +91,9 @@
     "through2": "^2.0.0",
     "update-notifier": "^1.0.0",
     "vinyl-paths": "^1.0.0",
-    "xml2js": "^0.4.15"
+    "xml2js": "^0.4.15",
+    "gulp-if": "^2.0.2",
+    "gulp-uglify": "^2.0.1"
   },
   "devDependencies": {
     "ava": "^0.15.2",
@@ -105,8 +107,6 @@
     "liferay-theme-deps-6.2": "*",
     "liferay-theme-deps-7.0": "*",
     "nyc": "^6.4.4",
-    "sinon": "^1.17.2",
-    "gulp-if": "^2.0.2",
-    "gulp-uglify": "^2.0.1"
+    "sinon": "^1.17.2"
   }
 }
