@@ -211,7 +211,7 @@ module.exports = function(options) {
 		return gulp.src(path.join(pathSrc, '**/*'), {
 			base: pathSrc
 		})
-			.pipe(gulpIf('!**/*.js', uglify()))
+			.pipe(gulpIf('**/*.js', uglify()))
 			.pipe(gulp.dest(pathBuild));
 	});
 
