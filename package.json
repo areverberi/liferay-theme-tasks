@@ -65,6 +65,7 @@
     "fs-extra": "^0.24.0",
     "globby": "^4.0.0",
     "gogo-shell": "*",
+    "gulp-clean-css": "^3.2.0",
     "gulp-concat": "^2.5.2",
     "gulp-cssimport": "^5.0.0",
     "gulp-debug": "^2.0.0",

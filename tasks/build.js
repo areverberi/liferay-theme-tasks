@@ -11,6 +11,7 @@ var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 var cssImport = require('gulp-cssimport');
 var gulpFilter = require('gulp-filter');
+var cleanCss = require('gulp-clean-css');
 
 var lfrThemeConfig = require('../lib/liferay_theme_config');
 var lookAndFeelUtil = require('../lib/look_and_feel_util');
@@ -93,7 +94,7 @@ module.exports = function(options) {
 		var sassOptions = getSassOptions(options.sassOptions, {
 			includePaths: getSassInlcudePaths(themeConfig.version, themeConfig.rubySass),
 			sourceMap: true,
-			outputStyle: 'compressed',
+			outputStyle: 'compact',
 		});
 
 		var cssBuild = pathBuild + '/_css';
@@ -268,7 +269,8 @@ module.exports = function(options) {
 		return gulp.src(pathBuild + '/_css/**/*')
 			.pipe(mainCssFilter)
 			.pipe(cssImport({}))
-			.pipe(mainCssFilter.restore)
+			.pipe(cleanCss())
+			.pipe(mainCssFilter.restore())
 			.pipe(gulp.dest(pathBuild + '/css'));
 	});
 
