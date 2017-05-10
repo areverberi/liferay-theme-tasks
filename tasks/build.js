@@ -264,7 +264,7 @@ module.exports = function(options) {
 	});
 
 	gulp.task('build:move-compiled-css', function() {
-		var mainCssFilter = gulpFilter('main.css', {restore: true});
+		var mainCssFilter = gulpFilter('**/main.css', {restore: true});
 		return gulp.src(pathBuild + '/_css/**/*')
 			.pipe(mainCssFilter)
 			.pipe(cssImport({}))
