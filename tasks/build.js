@@ -21,16 +21,16 @@ var STR_FTL = 'ftl';
 var STR_VM = 'vm';
 
 var themeConfig = lfrThemeConfig.getConfig();
-
+var overriddenFiles = [];
 var baseThemeGlob = getBaseThemeGlob(themeConfig.templateLanguage);
 
 var renamedFiles;
 
 module.exports = function(options) {
 	var gulp = options.gulp;
-
+	overriddenFiles = options.overriddenFiles || [];
 	var store = gulp.storage;
-
+	baseThemeGlob = getBaseThemeGlob(themeConfig.templateLanguage);
 	var pathBuild = options.pathBuild;
 	var pathSrc = options.pathSrc;
 
@@ -91,7 +91,8 @@ module.exports = function(options) {
 
 		var sassOptions = getSassOptions(options.sassOptions, {
 			includePaths: getSassInlcudePaths(themeConfig.version, themeConfig.rubySass),
-			sourceMap: false
+			sourceMap: true,
+			outputStyle: 'compressed',
 		});
 
 		var cssBuild = pathBuild + '/_css';
@@ -379,7 +380,7 @@ function getBaseThemeGlob(templateLanguage) {
 	else {
 		return glob + ')';
 	}
-
+	glob = glob +'|'+_(overriddenFiles).join('|');
 	return glob + '|*.' + templateLanguage + ')';
 }
 
