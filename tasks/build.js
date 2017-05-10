@@ -267,7 +267,7 @@ module.exports = function(options) {
 		var mainCssFilter = gulpFilter('main.css', {restore: true});
 		return gulp.src(pathBuild + '/_css/**/*')
 			.pipe(mainCssFilter)
-			.pipe(cssImport)
+			.pipe(cssImport({}))
 			.pipe(mainCssFilter.restore)
 			.pipe(gulp.dest(pathBuild + '/css'));
 	});
