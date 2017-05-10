@@ -9,7 +9,8 @@ var plugins = require('gulp-load-plugins')();
 var replace = require('gulp-replace-task');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
-		     
+var cssImport = require('gulp-cssimport');
+var gulpFilter = require('gulp-filter');
 
 var lfrThemeConfig = require('../lib/liferay_theme_config');
 var lookAndFeelUtil = require('../lib/look_and_feel_util');
@@ -263,7 +264,11 @@ module.exports = function(options) {
 	});
 
 	gulp.task('build:move-compiled-css', function() {
+		var mainCssFilter = gulpFilter('main.css', {restore: true});
 		return gulp.src(pathBuild + '/_css/**/*')
+			.pipe(mainCssFilter)
+			.pipe(cssImport)
+			.pipe(mainCssFilter.restore)
 			.pipe(gulp.dest(pathBuild + '/css'));
 	});
 
