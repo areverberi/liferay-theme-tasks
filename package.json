@@ -78,7 +78,7 @@
     "gulp-load-plugins": "^0.8.0",
     "gulp-plumber": "^0.6.6",
     "gulp-prompt": "^0.1.2",
-    "gulp-rename": "^1.2.0",
+    "gulp-rename": "https://registry.npmjs.org/gulp-rename/-/gulp-rename-1.2.2.tgz",
     "gulp-replace-task": "^0.2.1",
     "gulp-sourcemaps": "^1.2.8",
     "gulp-storage": "^1.0.6",

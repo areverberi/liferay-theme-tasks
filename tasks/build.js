@@ -52,6 +52,7 @@ module.exports = function(options) {
 			'build:compile-css',
 			'build:fix-url-functions',
 			'build:move-compiled-css',
+			'build:copy-and-rename-css',
 			'build:remove-old-css-dir',
 			'build:fix-at-directives',
 			'build:r2',
@@ -272,6 +273,14 @@ module.exports = function(options) {
 			.pipe(cleanCss())
 			.pipe(mainCssFilter.restore())
 			.pipe(gulp.dest(pathBuild + '/css'));
+	});
+
+	gulp.task('build:copy-and-rename-css', function() {
+		return gulp.src(pathBuild+'/css'+'/**/('+_(overriddenFiles).join('|')+')')
+		.pipe(plugins.rename({
+			extname: '.icss',
+		}))
+		.pipe(gulp.dest(pathBuild+'/css'));
 	});
 
 	gulp.task('build:r2', function() {
