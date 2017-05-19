@@ -277,7 +277,7 @@ module.exports = function(options) {
 
 	gulp.task('build:copy-and-rename-css', function() {
 		return gulp.src(pathBuild+'/css/*.css')
-			.pipe(gulp.rename(function (path) {
+			.pipe(plugins.rename(function (path) {
 				console.log('path', path);
     		path.extname = ".icss";
   		}))
