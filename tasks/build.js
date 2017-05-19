@@ -277,11 +277,12 @@ module.exports = function(options) {
 
 	gulp.task('build:copy-and-rename-css', function() {
 		return gulp.src(pathBuild+'/css/*.css')
-		.pipe(plugins.rename({
-			extname: '.icss',
-		}))
-		.pipe(plugins.plumber())
-		.pipe(gulp.dest(pathBuild+'/css'));
+			.pipe(gulp.rename(function (path) {
+				console.log('path', path);
+    		path.extname = ".icss";
+  		}))
+			.pipe(plugins.plumber())
+			.pipe(gulp.dest(pathBuild+'/css'));
 	});
 
 	gulp.task('build:r2', function() {
